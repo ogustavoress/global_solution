@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import br.com.fiap.checkpoint1.dto.PacienteCreateRequest;
 import br.com.fiap.checkpoint1.dto.PacienteResponse;
 import br.com.fiap.checkpoint1.dto.PacienteUpdateRequest;
@@ -28,14 +29,18 @@ public class PacienteController {
     private PacienteService pacienteService = new PacienteService();
 
     @PostMapping
+
     public ResponseEntity<PacienteResponse> create(@RequestBody PacienteCreateRequest dto) {
+
         Paciente pacienteCreated = pacienteService.createPaciente(dto);
         return ResponseEntity.status(201).body(new PacienteResponse()
                 .toDto(pacienteService.createPaciente(dto)));
     }
 
     @PutMapping("/{id}")
+
     public ResponseEntity<PacienteResponse> update(@PathVariable Long id, @RequestBody PacienteUpdateRequest dto){
+
         
         return pacienteService.updatePaciente(id, dto)
             .map(pacienteUpdated -> new PacienteResponse().toDto(pacienteUpdated))
