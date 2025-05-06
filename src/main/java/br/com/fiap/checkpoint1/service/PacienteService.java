@@ -23,7 +23,7 @@ public class PacienteService {
         paciente.setEndereco(dto.getEndereco());
         paciente.setBairro(dto.getBairro());
         paciente.setEmail(dto.getEmail());
-        paciente.setTelefoneCompleto(dto.getTelefone_completo());
+        paciente.setTelefoneCompleto(dto.getTelefoneCompleto());
         pacientes.add(paciente);
         return paciente;
     }
@@ -35,7 +35,7 @@ public class PacienteService {
                 p.setEndereco(dto.getEndereco());
                 p.setBairro(dto.getBairro());
                 p.setEmail(dto.getEmail());
-                p.setTelefoneCompleto(dto.getTelefone_completo());
+                p.setTelefoneCompleto(dto.getTelefoneCompleto());
                 return p;
             });
     }

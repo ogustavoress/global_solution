@@ -1,11 +1,14 @@
 package br.com.fiap.checkpoint1.dto;
 
+import java.time.LocalDate;
+
 public class PacienteUpdateRequest {
     private String nome;
     private String endereco;
     private String bairro;
     private String email;
-    private String telefone_completo;
+    private String telefoneCompleto;
+    private LocalDate dataNascimento;
 
     public String getNome() {
         return nome;
@@ -32,11 +35,16 @@ public class PacienteUpdateRequest {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getTelefone_completo() {
-        return telefone_completo;
+    public String getTelefoneCompleto() {
+        return telefoneCompleto;
     }
-    public void setTelefone_completo(String telefone_completo) {
-        this.telefone_completo = telefone_completo;
+    public void setTelefoneCompleto(String telefoneCompleto) {
+        this.telefoneCompleto = telefoneCompleto;
     }
- 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }

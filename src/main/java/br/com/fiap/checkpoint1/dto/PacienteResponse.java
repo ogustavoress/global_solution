@@ -1,5 +1,8 @@
 package br.com.fiap.checkpoint1.dto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import br.com.fiap.checkpoint1.model.Paciente;
 
 public class PacienteResponse {
@@ -9,6 +12,9 @@ public class PacienteResponse {
     private String bairro;
     private String email;
     private String telefoneCompleto;
+    private LocalDate dataNascimento;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 public PacienteResponse toDto(Paciente paciente){
     
@@ -19,6 +25,9 @@ public PacienteResponse toDto(Paciente paciente){
     response.setBairro(paciente.getBairro());
     response.setEmail(paciente.getEmail());
     response.setTelefoneCompleto(paciente.getTelefoneCompleto());
+    response.setDataNascimento(paciente.getDataNascimento());
+    response.setCreatedAt(paciente.getCreatedAt());
+    response.setUpdatedAt(paciente.getUpdatedAt());
     return response;
 }
 
@@ -70,6 +79,28 @@ public void setTelefoneCompleto(String telefoneCompleto) {
     this.telefoneCompleto = telefoneCompleto;
 }
 
-    
+public LocalDate getDataNascimento() {
+    return dataNascimento;
+}
+
+public void setDataNascimento(LocalDate dataNascimento) {
+    this.dataNascimento = dataNascimento;
+}
+
+public LocalDateTime getCreatedAt() {
+    return createdAt;
+}
+
+public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+}
+
+public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+}
+
+public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+}
 
 }
