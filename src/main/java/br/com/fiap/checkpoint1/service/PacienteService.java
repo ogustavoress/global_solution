@@ -2,10 +2,8 @@ package br.com.fiap.checkpoint1.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import br.com.fiap.checkpoint1.dto.PacienteCreateRequest;
 import br.com.fiap.checkpoint1.dto.PacienteUpdateRequest;
 import br.com.fiap.checkpoint1.model.Paciente;
@@ -13,45 +11,45 @@ import br.com.fiap.checkpoint1.model.Paciente;
 @Service
 public class PacienteService {
 
-    private List<Paciente> pacientes;
-    private long sequence = 1L;
+    private List<Paciente> pacientes; 
+    private long sequence = 1L; 
 
-    public Paciente createPaciente(PacienteCreateRequest dto){
-        Paciente paciente = new Paciente();
-        paciente.setId(sequence++);
-        paciente.setNome(dto.getNome());
-        paciente.setEndereco(dto.getEndereco());
-        paciente.setBairro(dto.getBairro());
-        paciente.setEmail(dto.getEmail());
-        paciente.setTelefoneCompleto(dto.getTelefoneCompleto());
-        pacientes.add(paciente);
-        return paciente;
-    }
-    public Optional<Paciente> updatePaciente(Long id, PacienteUpdateRequest dto){
-        return pacientes.stream()
-            .filter(p -> p.getId().equals(id))
-            .findFirst()
-            .map(p -> {
-                p.setEndereco(dto.getEndereco());
-                p.setBairro(dto.getBairro());
-                p.setEmail(dto.getEmail());
-                p.setTelefoneCompleto(dto.getTelefoneCompleto());
-                return p;
-            });
-    }
-    public boolean deletePaciente(@PathVariable Long id){
-        return pacientes.removeIf(p ->p.getId().equals(id));
+    public Paciente createPaciente(PacienteCreateRequest dto) {
+        Paciente paciente = new Paciente(); 
+        paciente.setId(sequence++); 
+        paciente.setNome(dto.getNome()); 
+        paciente.setEndereco(dto.getEndereco()); 
+        paciente.setBairro(dto.getBairro()); 
+        paciente.setEmail(dto.getEmail()); 
+        paciente.setTelefoneCompleto(dto.getTelefoneCompleto()); 
+        pacientes.add(paciente); 
+        return paciente; 
     }
 
-    public Optional<Paciente> getPacienteById(@PathVariable Long id){
-        return pacientes.stream()
-            .filter(p -> p.getId().equals(id))
-            .findFirst();
+    public Optional<Paciente> updatePaciente(Long id, PacienteUpdateRequest dto) {
+        return pacientes.stream() 
+                .filter(paciente -> paciente.getId().equals(id)) 
+                .findFirst() 
+                .map(paciente -> {
+                    paciente.setEndereco(dto.getEndereco()); 
+                    paciente.setBairro(dto.getBairro()); 
+                    paciente.setEmail(dto.getEmail()); 
+                    paciente.setTelefoneCompleto(dto.getTelefoneCompleto()); 
+                    return paciente; 
+                });
     }
-    public List <Paciente> getAll(){
+
+    public boolean deletePaciente(@PathVariable Long id) {
+        return pacientes.removeIf(paciente -> paciente.getId().equals(id)); 
+    }
+
+    public Optional<Paciente> getPacienteById(@PathVariable Long id) {
+        return pacientes.stream() 
+                .filter(paciente -> paciente.getId().equals(id)) 
+                .findFirst(); 
+    }
+
+    public List<Paciente> getAll() {
         return pacientes;
-   }
-
-
-
+    }
 }

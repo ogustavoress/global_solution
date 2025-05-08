@@ -1,23 +1,26 @@
 package br.com.fiap.checkpoint1.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import br.com.fiap.checkpoint1.model.Consulta;
 
 public class ConsultaResponse {
     private Long id;
     private Long pacienteId;
     private Long profissionalId;
-    private String dataConsulta;
+    private LocalDateTime dataConsulta;
     private String statusConsulta;
     private int quantidadeHoras;
     private double valorConsulta;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public ConsultaResponse toDto(ConsultaResponse consulta) {
+    public ConsultaResponse toDto(Consulta consulta) {
         ConsultaResponse response = new ConsultaResponse();
         response.setId(consulta.getId());
-        response.setPacienteId(consulta.getPacienteId());
-        response.setProfissionalId(consulta.getProfissionalId());
+        response.setPacienteId(consulta.getPaciente());
+        response.setProfissionalId(consulta.getProfissional());
         response.setDataConsulta(consulta.getDataConsulta());
         response.setStatusConsulta(consulta.getStatusConsulta());
         response.setQuantidadeHoras(consulta.getQuantidadeHoras());
@@ -51,11 +54,11 @@ public class ConsultaResponse {
         this.profissionalId = profissionalId;
     }
 
-    public String getDataConsulta() {
+    public LocalDateTime getDataConsulta() {
         return dataConsulta;
     }
 
-    public void setDataConsulta(String dataConsulta) {
+    public void setDataConsulta(LocalDateTime dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
 
@@ -82,16 +85,20 @@ public class ConsultaResponse {
     public void setValorConsulta(double valorConsulta) {
         this.valorConsulta = valorConsulta;
     }
-    public LocalDate getCreatedAt() {
+
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    public void setCreatedAt(LocalDate createdAt) {
+
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }  
-    public LocalDate getUpdatedAt() {
+    }
+
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
-    public void setUpdatedAt(LocalDate updatedAt) {
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

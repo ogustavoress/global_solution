@@ -25,5 +25,4 @@ public class ConsultaUpdateRequest {
     public void setQuantidadeHoras(int quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
     }
-
 }

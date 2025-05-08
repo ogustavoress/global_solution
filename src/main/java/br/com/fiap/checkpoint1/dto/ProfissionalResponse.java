@@ -1,19 +1,22 @@
 package br.com.fiap.checkpoint1.dto;
 
+import java.time.LocalDateTime;
+import br.com.fiap.checkpoint1.model.Profissional;
+
 public class ProfissionalResponse {
     private String nome;
     private String especialidade;
     private double valorHora;
-    private String createdAt;
-    private String updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public ProfissionalResponse toDto(ProfissionalResponse profissional){
+    public ProfissionalResponse toDto(Profissional updateProfissional){
         ProfissionalResponse response = new ProfissionalResponse();
-        response.setNome(profissional.getNome());
-        response.setEspecialidade(profissional.getEspecialidade());
-        response.setValorHora(profissional.getValorHora());
-        response.setCreatedAt(profissional.getCreatedAt());
-        response.setUpdatedAt(profissional.getUpdatedAt());
+        response.setNome(updateProfissional.getNome());
+        response.setEspecialidade(updateProfissional.getEspecialidade());
+        response.setValorHora(updateProfissional.getValorHora());
+        response.setCreatedAt(updateProfissional.getCreatedAt());
+        response.setUpdatedAt(updateProfissional.getUpdatedAt());
         return response;
     }
     
@@ -35,19 +38,16 @@ public class ProfissionalResponse {
     public void setValorHora(double valorHora) {
         this.valorHora = valorHora;
     }
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    public String getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    
-
 }

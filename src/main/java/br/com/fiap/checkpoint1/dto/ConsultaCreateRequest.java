@@ -46,9 +46,4 @@ public class ConsultaCreateRequest {
     public void setValorConsulta(double valorConsulta) {
         this.valorConsulta = valorConsulta;
     }
-    
-    
-
-
-
 }

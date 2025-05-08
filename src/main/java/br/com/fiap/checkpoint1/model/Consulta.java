@@ -1,7 +1,6 @@
 package br.com.fiap.checkpoint1.model;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,10 +12,10 @@ public class Consulta {
     private Long id;
 
     @ManyToOne
-    private Profissional profissional;
+    private Long profissional;
 
     @ManyToOne
-    private Paciente paciente;
+    private Long paciente;
 
     private LocalDateTime dataConsulta;
     private String statusConsulta;
@@ -31,16 +30,16 @@ public class Consulta {
     public void setId(Long id) {
         this.id = id;
     }
-    public Profissional getProfissional() {
+    public Long getProfissional() {
         return profissional;
     }
-    public void setProfissionalId(Profissional profissional) {
+    public void setProfissional(Long profissional) {
         this.profissional = profissional;
     }
-    public Paciente getPacienteId() {
+    public Long getPaciente() {
         return paciente;
     }
-    public void setPacienteId(Paciente paciente) {
+    public void setPaciente(Long paciente) {
         this.paciente = paciente;
     }
     public LocalDateTime getDataConsulta() {

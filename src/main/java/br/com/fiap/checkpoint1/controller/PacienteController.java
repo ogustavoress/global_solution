@@ -12,48 +12,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
 import br.com.fiap.checkpoint1.dto.PacienteCreateRequest;
 import br.com.fiap.checkpoint1.dto.PacienteResponse;
 import br.com.fiap.checkpoint1.dto.PacienteUpdateRequest;
-import br.com.fiap.checkpoint1.model.Paciente;
 import br.com.fiap.checkpoint1.service.PacienteService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
 
     @Autowired
-    private PacienteService pacienteService = new PacienteService();
+    private PacienteService pacienteService;
 
     @PostMapping
+    public ResponseEntity<PacienteResponse> createPaciente(@RequestBody PacienteCreateRequest dto) {
 
-    public ResponseEntity<PacienteResponse> create(@RequestBody PacienteCreateRequest dto) {
-
-        Paciente pacienteCreated = pacienteService.createPaciente(dto);
-        return ResponseEntity.status(201).body(new PacienteResponse()
-                .toDto(pacienteService.createPaciente(dto)));
+        return ResponseEntity.status(201).body(new PacienteResponse().toDto(pacienteService.createPaciente(dto)));
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<PacienteResponse> updatePaciente(@PathVariable Long id, @RequestBody PacienteUpdateRequest dto) {
 
-    public ResponseEntity<PacienteResponse> update(@PathVariable Long id, @RequestBody PacienteUpdateRequest dto){
-
-        
         return pacienteService.updatePaciente(id, dto)
-            .map(pacienteUpdated -> new PacienteResponse().toDto(pacienteUpdated))
+                .map(updatePaciente -> new PacienteResponse().toDto(updatePaciente))
                 .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePaciente(@PathVariable Long id) {
         if (pacienteService.deletePaciente(id)) {
             return ResponseEntity.noContent().build();
-        } 
-        else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
@@ -62,17 +53,17 @@ public class PacienteController {
     public ResponseEntity<PacienteResponse> getPacienteById(@PathVariable Long id) {
         return pacienteService.getPacienteById(id)
                 .map(paciente -> new PacienteResponse().toDto(paciente))
-                    .map(ResponseEntity::ok)
-                        .orElse(ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<PacienteResponse>> findAll() {
-        List<PacienteResponse> response = pacienteService.getAll().stream()
+    public ResponseEntity<List<PacienteResponse>> getAllPacientes() {
+        List<PacienteResponse> pacientes = pacienteService.getAll()
+                .stream()
                 .map(paciente -> new PacienteResponse().toDto(paciente))
-                    .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(pacientes);
     }
-
 }

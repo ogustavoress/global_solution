@@ -23,5 +23,4 @@ public class ProfissionalCreateRequest {
     public void setValorHora(double valorHora) {
         this.valorHora = valorHora;
     }
-    
 }
