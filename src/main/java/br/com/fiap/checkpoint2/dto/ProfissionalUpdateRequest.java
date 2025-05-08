@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint1.dto;
+package br.com.fiap.checkpoint2.dto;
 
 public class ProfissionalUpdateRequest {
     private String nome;

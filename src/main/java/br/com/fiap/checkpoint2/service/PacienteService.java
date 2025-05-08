@@ -1,12 +1,13 @@
-package br.com.fiap.checkpoint1.service;
+package br.com.fiap.checkpoint2.service;
 
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import br.com.fiap.checkpoint1.dto.PacienteCreateRequest;
-import br.com.fiap.checkpoint1.dto.PacienteUpdateRequest;
-import br.com.fiap.checkpoint1.model.Paciente;
+
+import br.com.fiap.checkpoint2.dto.PacienteCreateRequest;
+import br.com.fiap.checkpoint2.dto.PacienteUpdateRequest;
+import br.com.fiap.checkpoint2.model.Paciente;
 
 @Service
 public class PacienteService {

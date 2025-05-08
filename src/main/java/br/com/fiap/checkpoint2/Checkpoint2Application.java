@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint1;
+package br.com.fiap.checkpoint2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

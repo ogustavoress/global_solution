@@ -1,4 +1,4 @@
-# Checkpoint
+# Checkpoint 2
 Documentação referente à API criada para o 2º checkpoint de *Microsservice and Web Engineering* (continuação da API do Chekcpoint 1).
 
 ## Informações

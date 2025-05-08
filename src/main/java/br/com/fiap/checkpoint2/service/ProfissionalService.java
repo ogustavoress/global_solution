@@ -1,12 +1,13 @@
-package br.com.fiap.checkpoint1.service;
+package br.com.fiap.checkpoint2.service;
 
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import br.com.fiap.checkpoint1.dto.ProfissionalCreateRequest;
-import br.com.fiap.checkpoint1.dto.ProfissionalUpdateRequest;
-import br.com.fiap.checkpoint1.model.Profissional;
+
+import br.com.fiap.checkpoint2.dto.ProfissionalCreateRequest;
+import br.com.fiap.checkpoint2.dto.ProfissionalUpdateRequest;
+import br.com.fiap.checkpoint2.model.Profissional;
 
 @Service
 public class ProfissionalService {

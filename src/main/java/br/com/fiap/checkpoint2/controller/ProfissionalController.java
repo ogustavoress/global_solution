@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint1.controller;
+package br.com.fiap.checkpoint2.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.fiap.checkpoint1.dto.ProfissionalCreateRequest;
-import br.com.fiap.checkpoint1.dto.ProfissionalResponse;
-import br.com.fiap.checkpoint1.dto.ProfissionalUpdateRequest;
-import br.com.fiap.checkpoint1.service.ProfissionalService;
+
+import br.com.fiap.checkpoint2.dto.ProfissionalCreateRequest;
+import br.com.fiap.checkpoint2.dto.ProfissionalResponse;
+import br.com.fiap.checkpoint2.dto.ProfissionalUpdateRequest;
+import br.com.fiap.checkpoint2.service.ProfissionalService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController

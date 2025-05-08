@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint1.service;
+package br.com.fiap.checkpoint2.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.com.fiap.checkpoint1.dto.ConsultaCreateRequest;
-import br.com.fiap.checkpoint1.model.Consulta;
+import br.com.fiap.checkpoint2.dto.ConsultaCreateRequest;
+import br.com.fiap.checkpoint2.model.Consulta;
 
 @Service
 public class ConsultaService {

@@ -1,80 +1,102 @@
-package br.com.fiap.checkpoint1.model;
+package br.com.fiap.checkpoint2.dto;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
-public class Consulta {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import br.com.fiap.checkpoint2.model.Consulta;
+
+public class ConsultaResponse {
     private Long id;
-
-    @ManyToOne
-    private Long profissional;
-
-    @ManyToOne
-    private Long paciente;
-
+    private Long pacienteId;
+    private Long profissionalId;
     private LocalDateTime dataConsulta;
     private String statusConsulta;
     private int quantidadeHoras;
-    private Double valorConsulta;
+    private double valorConsulta;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    
+
+    public ConsultaResponse toDto(Consulta consulta) {
+        ConsultaResponse response = new ConsultaResponse();
+        response.setId(consulta.getId());
+        response.setPacienteId(consulta.getPaciente());
+        response.setProfissionalId(consulta.getProfissional());
+        response.setDataConsulta(consulta.getDataConsulta());
+        response.setStatusConsulta(consulta.getStatusConsulta());
+        response.setQuantidadeHoras(consulta.getQuantidadeHoras());
+        response.setValorConsulta(consulta.getValorConsulta());
+        response.setCreatedAt(consulta.getCreatedAt());
+        response.setUpdatedAt(consulta.getUpdatedAt());
+        return response;
+    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getProfissional() {
-        return profissional;
+
+    public Long getPacienteId() {
+        return pacienteId;
     }
-    public void setProfissional(Long profissional) {
-        this.profissional = profissional;
+
+    public void setPacienteId(Long pacienteId) {
+        this.pacienteId = pacienteId;
     }
-    public Long getPaciente() {
-        return paciente;
+
+    public Long getProfissionalId() {
+        return profissionalId;
     }
-    public void setPaciente(Long paciente) {
-        this.paciente = paciente;
+
+    public void setProfissionalId(Long profissionalId) {
+        this.profissionalId = profissionalId;
     }
+
     public LocalDateTime getDataConsulta() {
         return dataConsulta;
     }
+
     public void setDataConsulta(LocalDateTime dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
+
     public String getStatusConsulta() {
         return statusConsulta;
     }
+
     public void setStatusConsulta(String statusConsulta) {
         this.statusConsulta = statusConsulta;
     }
+
     public int getQuantidadeHoras() {
         return quantidadeHoras;
     }
+
     public void setQuantidadeHoras(int quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
     }
-    public Double getValorConsulta() {
+
+    public double getValorConsulta() {
         return valorConsulta;
     }
-    public void setValorConsulta(Double valorConsulta) {
+
+    public void setValorConsulta(double valorConsulta) {
         this.valorConsulta = valorConsulta;
     }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }

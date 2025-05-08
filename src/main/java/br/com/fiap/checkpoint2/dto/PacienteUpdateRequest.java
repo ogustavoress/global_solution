@@ -1,21 +1,22 @@
-package br.com.fiap.checkpoint1.dto;
+package br.com.fiap.checkpoint2.dto;
 
 import java.time.LocalDate;
 
-public class PacienteCreateRequest {
+public class PacienteUpdateRequest {
     private String nome;
     private String endereco;
     private String bairro;
     private String email;
     private String telefoneCompleto;
     private LocalDate dataNascimento;
-    
+
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
     public String getEndereco() {
         return endereco;
     }
