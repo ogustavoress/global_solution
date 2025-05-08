@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import br.com.fiap.checkpoint1.dto.ProfissionalCreateRequest;
-import br.com.fiap.checkpoint1.dto.ProfissionalResponse;
 import br.com.fiap.checkpoint1.dto.ProfissionalUpdateRequest;
 import br.com.fiap.checkpoint1.model.Profissional;
 

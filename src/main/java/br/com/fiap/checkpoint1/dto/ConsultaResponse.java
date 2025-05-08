@@ -1,6 +1,5 @@
 package br.com.fiap.checkpoint1.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import br.com.fiap.checkpoint1.model.Consulta;
