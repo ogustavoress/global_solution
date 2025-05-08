@@ -81,8 +81,7 @@ Use o *Maven* para iniciar a aplicação com o comando:
 ```
 mvn spring-boot:run
 ```
-Após a execução da aplicação, use ferramentas como **Postman** ou **Swagger UI** para testar os endpoints diretamente
-endereço:
+Após a execução da aplicação, use ferramentas como **Postman** ou **Swagger UI** para testar os endpoints diretamente:
 http://localhost:8080/swagger-ui/index.html. 
 
 
