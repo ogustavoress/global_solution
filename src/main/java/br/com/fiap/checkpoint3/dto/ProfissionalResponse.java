@@ -1,28 +1,26 @@
-package br.com.fiap.checkpoint2.model;
+package br.com.fiap.checkpoint3.dto;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
-public class Profissional {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+import br.com.fiap.checkpoint3.model.Profissional;
+
+public class ProfissionalResponse {
     private String nome;
     private String especialidade;
     private double valorHora;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public ProfissionalResponse toDto(Profissional updateProfissional){
+        ProfissionalResponse response = new ProfissionalResponse();
+        response.setNome(updateProfissional.getNome());
+        response.setEspecialidade(updateProfissional.getEspecialidade());
+        response.setValorHora(updateProfissional.getValorHora());
+        response.setCreatedAt(updateProfissional.getCreatedAt());
+        response.setUpdatedAt(updateProfissional.getUpdatedAt());
+        return response;
+    }
     
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getNome() {
         return nome;
     }

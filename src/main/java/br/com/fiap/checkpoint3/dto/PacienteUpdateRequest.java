@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint2.dto;
+package br.com.fiap.checkpoint3.dto;
 
 import java.time.LocalDate;
 

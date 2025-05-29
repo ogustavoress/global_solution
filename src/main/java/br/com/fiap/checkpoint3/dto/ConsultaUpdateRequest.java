@@ -1,27 +1,12 @@
-package br.com.fiap.checkpoint2.dto;
+package br.com.fiap.checkpoint3.dto;
 
 import java.time.LocalDateTime;
 
-public class ConsultaCreateRequest {
-    private Long pacienteId;
-    private Long profissionalId;
+public class ConsultaUpdateRequest {
     private LocalDateTime dataConsulta;
     private String statusConsulta;
     private int quantidadeHoras;
-    private double valorConsulta;
     
-    public Long getPacienteId() {
-        return pacienteId;
-    }
-    public void setPacienteId(Long pacienteId) {
-        this.pacienteId = pacienteId;
-    }
-    public Long getProfissionalId() {
-        return profissionalId;
-    }
-    public void setProfissionalId(Long profissionalId) {
-        this.profissionalId = profissionalId;
-    }
     public LocalDateTime getDataConsulta() {
         return dataConsulta;
     }
@@ -39,11 +24,5 @@ public class ConsultaCreateRequest {
     }
     public void setQuantidadeHoras(int quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
-    }
-    public double getValorConsulta() {
-        return valorConsulta;
-    }
-    public void setValorConsulta(double valorConsulta) {
-        this.valorConsulta = valorConsulta;
     }
 }

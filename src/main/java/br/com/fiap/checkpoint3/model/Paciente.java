@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint2.model;
+package br.com.fiap.checkpoint3.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
