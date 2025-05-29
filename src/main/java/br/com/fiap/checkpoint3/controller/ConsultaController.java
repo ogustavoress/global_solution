@@ -8,55 +8,76 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.checkpoint3.dto.ConsultaCreateRequest;
-import br.com.fiap.checkpoint3.dto.ConsultaResponse;
+import br.com.fiap.checkpoint3.dto.consulta.ConsultaCreateRequest;
+import br.com.fiap.checkpoint3.dto.consulta.ConsultaResponse;
+import br.com.fiap.checkpoint3.dto.consulta.ConsultaUpdateRequest;
+import br.com.fiap.checkpoint3.model.ConsultaStatus;
+import br.com.fiap.checkpoint3.repository.ConsultaRepository;
 import br.com.fiap.checkpoint3.service.ConsultaService;
-import br.com.fiap.checkpoint3.service.PacienteService;
-import br.com.fiap.checkpoint3.service.ProfissionalService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("/consultas")
+@RequestMapping("consultas")
 public class ConsultaController {
 
     @Autowired
     private ConsultaService consultaService;
-    private PacienteService pacienteService;
-    private ProfissionalService profissionalService;
+    
+    @Autowired
+    private ConsultaRepository consultaRepository; 
 
     @PostMapping
-    public ResponseEntity<ConsultaResponse> createConsulta(@RequestBody ConsultaCreateRequest dto) {
-        
-        return ResponseEntity.status(201).body(new ConsultaResponse().toDto(consultaService.createConsulta(dto, pacienteService, profissionalService)));
-    }
+    public ResponseEntity<ConsultaResponse> create(@RequestBody ConsultaCreateRequest dto) {
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePaciente(@PathVariable Long id) {
-        if (consultaService.deleteConsulta(id)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.status(201).body(new ConsultaResponse().toDto(consultaService.create(dto)));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ConsultaResponse> getConsultaById(@PathVariable Long id) {
-        return consultaService.getConsultaById(id)
+    public ResponseEntity<ConsultaResponse> getById(@PathVariable Long id) {
+        return consultaService.getById(id)
                 .map(consulta -> new ConsultaResponse().toDto(consulta))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<ConsultaResponse>> getAllConsultas() {
+    public ResponseEntity<List<ConsultaResponse>> getAll() {
         List<ConsultaResponse> consultas = consultaService.getAll()
                 .stream()
                 .map(consulta -> new ConsultaResponse().toDto(consulta))
                 .collect(Collectors.toList());
         
         return ResponseEntity.ok(consultas);
+    }
+
+    @GetMapping("query")
+    public ResponseEntity<List<ConsultaResponse>> getByStatus(ConsultaStatus status) {
+        List<ConsultaResponse> consultas = consultaRepository.findByStatus(status)
+                .stream()
+                .map(consulta -> new ConsultaResponse().toDto(consulta))
+                .collect(Collectors.toList());
+        
+        return ResponseEntity.ok(consultas);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ConsultaResponse> update(@RequestBody ConsultaUpdateRequest dto, @PathVariable Long id) {
+        return consultaService.update(dto, id)
+                .map(consulta -> new ConsultaResponse().toDto(consulta))
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (consultaService.deleteById(id)) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

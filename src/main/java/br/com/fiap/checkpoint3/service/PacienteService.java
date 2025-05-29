@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.com.fiap.checkpoint3.dto.PacienteCreateRequest;
-import br.com.fiap.checkpoint3.dto.PacienteUpdateRequest;
+import br.com.fiap.checkpoint3.dto.Paciente.PacienteCreateRequest;
+import br.com.fiap.checkpoint3.dto.Paciente.PacienteUpdateRequest;
 import br.com.fiap.checkpoint3.model.Paciente;
 
 @Service
@@ -15,7 +15,7 @@ public class PacienteService {
     private List<Paciente> pacientes; 
     private long sequence = 1L; 
 
-    public Paciente createPaciente(PacienteCreateRequest dto) {
+    public Paciente create(PacienteCreateRequest dto) {
         Paciente paciente = new Paciente(); 
         paciente.setId(sequence++); 
         paciente.setNome(dto.getNome()); 
@@ -27,7 +27,17 @@ public class PacienteService {
         return paciente; 
     }
 
-    public Optional<Paciente> updatePaciente(Long id, PacienteUpdateRequest dto) {
+    public Optional<Paciente> getById(@PathVariable Long id) {
+        return pacientes.stream() 
+                .filter(paciente -> paciente.getId().equals(id)) 
+                .findFirst(); 
+    }
+
+    public List<Paciente> getAll() {
+        return pacientes;
+    }
+
+    public Optional<Paciente> update(Long id, PacienteUpdateRequest dto) {
         return pacientes.stream() 
                 .filter(paciente -> paciente.getId().equals(id)) 
                 .findFirst() 
@@ -40,17 +50,7 @@ public class PacienteService {
                 });
     }
 
-    public boolean deletePaciente(@PathVariable Long id) {
+    public boolean delete(@PathVariable Long id) {
         return pacientes.removeIf(paciente -> paciente.getId().equals(id)); 
-    }
-
-    public Optional<Paciente> getPacienteById(@PathVariable Long id) {
-        return pacientes.stream() 
-                .filter(paciente -> paciente.getId().equals(id)) 
-                .findFirst(); 
-    }
-
-    public List<Paciente> getAll() {
-        return pacientes;
     }
 }

@@ -1,34 +1,42 @@
-package br.com.fiap.checkpoint3.model;
+package br.com.fiap.checkpoint3.dto.consulta;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
-public class Consulta {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import br.com.fiap.checkpoint3.model.Consulta;
+import br.com.fiap.checkpoint3.model.ConsultaStatus;
+import br.com.fiap.checkpoint3.model.Paciente;
+import br.com.fiap.checkpoint3.model.Profissional;
+
+public class ConsultaResponse {
     private Long id;
-
-    @ManyToOne
     private Paciente paciente;
-
-    @ManyToOne
     private Profissional profissional;
-
-    private LocalDateTime data;
+    private LocalDateTime dataConsulta;
     private ConsultaStatus status;
     private BigInteger quantidadeHoras;
     private BigDecimal valorConsulta;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    
+
+    public ConsultaResponse toDto(Consulta consulta) {
+        this.setId(consulta.getId());
+        this.setPaciente(consulta.getPaciente());
+        this.setProfissional(consulta.getProfissional());
+        this.setDataConsulta(consulta.getData());
+        this.setStatus(consulta.getStatus());
+        this.setQuantidadeHoras(consulta.getQuantidadeHoras());
+        this.setValorConsulta(consulta.getValorConsulta());
+        this.setCreatedAt(consulta.getCreatedAt());
+        this.setUpdatedAt(consulta.getUpdatedAt());
+        return this;
+    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -36,6 +44,7 @@ public class Consulta {
     public Paciente getPaciente() {
         return paciente;
     }
+
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
@@ -43,20 +52,23 @@ public class Consulta {
     public Profissional getProfissional() {
         return profissional;
     }
+
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public LocalDateTime getDataConsulta() {
+        return dataConsulta;
     }
-    public void setData(LocalDateTime data) {
-        this.data = data;
+
+    public void setDataConsulta(LocalDateTime dataConsulta) {
+        this.dataConsulta = dataConsulta;
     }
 
     public ConsultaStatus getStatus() {
         return status;
     }
+
     public void setStatus(ConsultaStatus status) {
         this.status = status;
     }
@@ -64,6 +76,7 @@ public class Consulta {
     public BigInteger getQuantidadeHoras() {
         return quantidadeHoras;
     }
+
     public void setQuantidadeHoras(BigInteger quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
     }
@@ -71,6 +84,7 @@ public class Consulta {
     public BigDecimal getValorConsulta() {
         return valorConsulta;
     }
+
     public void setValorConsulta(BigDecimal valorConsulta) {
         this.valorConsulta = valorConsulta;
     }
@@ -78,6 +92,7 @@ public class Consulta {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
@@ -85,6 +100,7 @@ public class Consulta {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }

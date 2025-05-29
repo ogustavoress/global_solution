@@ -1,5 +1,6 @@
-package br.com.fiap.checkpoint3.dto;
+package br.com.fiap.checkpoint3.dto.profissional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import br.com.fiap.checkpoint3.model.Profissional;
@@ -7,7 +8,7 @@ import br.com.fiap.checkpoint3.model.Profissional;
 public class ProfissionalResponse {
     private String nome;
     private String especialidade;
-    private double valorHora;
+    private BigDecimal valorHora;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -33,10 +34,10 @@ public class ProfissionalResponse {
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
-    public double getValorHora() {
+    public BigDecimal getValorHora() {
         return valorHora;
     }
-    public void setValorHora(double valorHora) {
+    public void setValorHora(BigDecimal valorHora) {
         this.valorHora = valorHora;
     }
     public LocalDateTime getCreatedAt() {

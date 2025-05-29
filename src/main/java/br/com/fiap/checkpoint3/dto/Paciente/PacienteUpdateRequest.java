@@ -1,4 +1,4 @@
-package br.com.fiap.checkpoint3.dto;
+package br.com.fiap.checkpoint3.dto.Paciente;
 
 import java.time.LocalDate;
 
