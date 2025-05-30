@@ -1,88 +1,87 @@
-# Checkpoint 3
-API para sistema de agendamento de consulta criada para o 2º checkpoint de *Microsservice and Web Engineering* (continuação da API do Checkpoint 1 e Checkpoint 2).
+# Global Solution - Gestão de Abrigos
 
-## Informações
-**Nome:** Gustavo de Carvalho Sena Ressurreição.
+Projeto desenvolvido para a disciplina Microservice and Web Engineering, 3º semestre, Bacharelado em Sistemas de Informação (FIAP).  
 
-**RM** 550983.
+Tema: Eventos Extremos — cadastro e gestão de abrigos para situações de desastres naturais.
 
-**Turma:** 3SIR.
+---
 
-## Escopo do Projeto
-O projeto consiste no desenvolvimento de uma API que responde a requisições HTTP, através da operação CRUD:
+## Tecnologias utilizadas
 
-### Rotas (endpoints)
-* **POST /pacientes:** 
-    * Cadastra um paciente.
-* **PUT /pacientes/{id}:** 
-    * Atualiza os dados do paciente.
-* **DELETE /pacientes/{id}:** 
-    * Exclui um paciente.
-* **GET /pacientes/{id}:**
-   * Busca um paciente pelo id.
-* **GET /pacientes**
-   * Retorna a lista de pacientes.    
+- Java 17
+- Spring Boot 3
+- Spring Data JPA
+- MySQL Database
+- Maven
+- Springdoc OpenAPI (Swagger)
+- Jakarta Validation
 
-* **POST /profissionais:** 
-    * Cadastra um profissional.
-* **PUT /pacientes/{id}:** 
-    * Atualiza os dados do profissional.
-* **DELETE /pacientes/{id}:** 
-    * Exclui um profissional.
-* **GET /pacientes/{id}:**
-   * Busca um profissional pelo id.
-* **GET /pacientes**
-   * Retorna a lista de profissionais.
+---
 
-* **POST /pacientes:** 
-    * Cadastra uma consulta.
-* **PUT /pacientes/{id}:** 
-    * Atualiza os dados da consulta.
-* **DELETE /pacientes/{id}:** 
-    * Exclui uma consulta.
-* **GET /pacientes/{id}:**
-   * Busca uma consulta pelo id.
-* **GET /pacientes**
-   * Retorna a lista de consultas. 
-## Estrutura de Código
-A aplicação foi estruturada em diferentes camadas, cada uma com suas responsabilidades: 
+## Configuração do projeto
 
-**Model:** Realiza o mapeamento das entidades utilizadas no banco de dados.
+### Metadata no Spring Initializr
 
-**Controller:** Responsável por gerenciar as requisições HTTP, encaminhando-as para os serviços correspondentes.
+- **Group:** `br.com.fiap.rm_550983`
+- **Artifact:** `globalsolution`
+- **Package:** `br.com.fiap.rm_550983`
 
-**DTO:** Facilita o transporte de dados entre as camadas aplicação.
+### Dependências principais
 
-**Service:** Concentra a lógica de negócio da API.
+- Spring Web
+- Spring Data JPA
+- MySQL Database
+- Springdoc OpenAPI UI
+- Spring Boot DevTools
+- Jakarta Validation (opcional, para validação DTOs)
 
-## Configuração e Execução
+---
 
-### Swagger para Documentação da API
-Para configurar a documentação com Swagger, consulte a [documentação oficial](https://sprinhttps://springdoc.org/properties.html).
+## Estrutura do projeto
 
-No arquivo `application.properties`, utilize as seguintes configurações:
+- `entity` — Classe `Abrigo` representa a tabela do banco de dados.
+- `repository` — Interface `AbrigoRepository` para operações CRUD.
+- `dto` — Objetos de transferência:  
+  - `AbrigoCreateRequest` — dados para criação de abrigo  
+  - `AbrigoUpdateRequest` — dados para atualização  
+  - `AbrigoResponse` — dados para respostas da API
+- `service` — `AbrigoService` encapsula a lógica de negócio e operações.
+- `controller` — `AbrigoController` expõe as APIs REST para CRUD.
+- `exception` (opcional) — tratamento customizado de erros (não implementado).
 
-```
-properties
-spring.application.name=checkpoint2
-springdoc.swagger-ui.path=/
+---
 
-spring.datasource.url=jdbc:mysql://localhost:3306/api?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=root_pwd
+## Modelagem da entidade Abrigo
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.open-in-view=true
-spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-```
+| Campo            | Tipo    | Descrição                     |
+|------------------|---------|-------------------------------|
+| id               | Long    | Identificador único (PK)      |
+| nome             | String  | Nome do abrigo                |
+| endereco         | String  | Endereço do abrigo            |
+| capacidadeMaxima  | Integer | Capacidade máxima de pessoas  |
+| capacidadeAtual   | Integer | Quantidade atual de pessoas   |
+
+---
+
+## Endpoints da API REST
+
+| Método | URL            | Descrição                         |
+|--------|----------------|-----------------------------------|
+| POST   | `/abrigos`     | Criar um novo abrigo              |
+| PUT    | `/abrigos/{id}`| Atualizar abrigo existente        |
+| DELETE | `/abrigos/{id}`| Remover abrigo por ID             |
+| GET    | `/abrigos/{id}`| Buscar abrigo por ID              |
+| GET    | `/abrigos`     | Listar todos os abrigos           |
+
+---
+
 ## Rodando a API
 Use o *Maven* para iniciar a aplicação com o comando:
 ```
 mvn spring-boot:run
 ```
 Após a execução da aplicação, use a ferramenta **Swagger UI** para testar os endpoints diretamente:
-http://localhost:8080/swagger-ui/index.html. 
+http://localhost:8080/. 
 
 
 ## Referências
