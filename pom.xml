@@ -8,11 +8,11 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.fiap</groupId>
-	<artifactId>checkpoint2</artifactId>
+	<groupId>br.com.fiap.rm_550983</groupId>
+	<artifactId>globalsolution</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>checkpoint2</name>
-	<description>Checkpoint 2</description>
+	<name>globalsolution</name>
+	<description>API cadastro de abrigos</description>
 	<url/>
 	<licenses>
 		<license/>
